@@ -26,3 +26,5 @@ ipywidgets>=8.1.0
 
 # Optional: For symbolic math rendering (gate equations)
 sympy>=1.12
+
+argparse ≥3.2
