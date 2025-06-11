@@ -22,7 +22,7 @@ It is a research-ready platform, architected for those who not only **use** quan
 ## 🧬 Core Quantum Modules (Implemented in Full Fidelity)
 
 ### 1. Shor's Algorithm – Periodicity-Based Factorization
-Shor’s algorithm decomposes RSA-challenging integers using **modular exponentiation** and **quantum period finding**, followed by a classical **continued fractions** algorithm to extract the correct order \( r \):
+Shor’s algorithm decomposes RSA-challenging integers using **modular exponentiation** and **quantum period finding**, followed by a classical **continued fractions** algorithm to extract the correct order r:
 
 ```python
 factor_integer(21)  # Output: [3, 7]
@@ -34,12 +34,12 @@ Internally, it constructs superpositions of modular exponentials and applies an 
 <img src="https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/06_shor/shor_full.png" alt="Shor's Algorithm" width="600"/>
 
 **Mathematical Workflow:**
-\[
+```math
 \text{Find period } r \text{ such that } a^r \equiv 1 \ (\text{mod } N)
-\]
-\[
+```
+```math
 \text{Then use GCD}(a^{r/2} \pm 1, N) \Rightarrow \text{factors of } N
-\]
+```
 
 ---
 
@@ -54,9 +54,9 @@ create_qft_circuit(n_qubits=3)
 <img src="https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/04_QFT/qft.png" alt="QFT" width="600"/>
 
 **Core Transformation:**
-\[
+```math
 |x\rangle \rightarrow \frac{1}{\sqrt{2^n}} \sum_{y=0}^{2^n-1} e^{2\pi i xy / 2^n} |y\rangle
-\]
+```
 
 It’s the foundation for every periodic function sampling in quantum space.
 
@@ -95,9 +95,9 @@ solution, cost = simple_qubo_problem()
 <img src="https://raw.githubusercontent.com/Qiskit/qiskit-machine-learning/main/docs/images/qaoa_process.png" alt="QAOA Process" width="600"/>
 
 **Mathematical Model:**
-\[
+```math
 H_{QUBO} = \sum_i Q_{ii} x_i + \sum_{i \neq j} Q_{ij} x_i x_j
-\]
+```
 
 ---
 
