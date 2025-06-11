@@ -31,7 +31,7 @@ factor_integer(21)  # Output: [3, 7]
 Internally, it constructs superpositions of modular exponentials and applies an **inverse QFT** to extract the period.
 
 **Quantum Circuit Visualization:**
-![Shor's Algorithm](![image](https://github.com/user-attachments/assets/bfd11c04-43a5-44ee-83fe-1e0c4fb010c7)
+![Shor's Algorithm](images/QC.png)
 )
 
 **Mathematical Workflow:**
@@ -52,8 +52,7 @@ create_qft_circuit(n_qubits=3)
 ```
 
 **Quantum Circuit:**
-![QFT](![image](https://github.com/user-attachments/assets/890c64b0-6d40-4aeb-85f0-41ab8ed8a7b5)
-)
+![QFT](images/QFT.jpeg)
 
 **Core Transformation:**
 \[
@@ -73,8 +72,7 @@ simulate_qpe(qc)
 ```
 
 **Circuit Layout:**
-![QPE](![image](https://github.com/user-attachments/assets/f4f6a7f6-3fc6-4604-9dd3-6a9831d4f5f2)
-)
+![QPE](images/QPE.png)
 
 This is used in:
 - **Quantum chemistry** for molecular ground-state energies.
@@ -95,8 +93,7 @@ solution, cost = simple_qubo_problem()
 - Parameter optimization: uses classical optimizers like COBYLA/SPSA
 
 **QAOA Optimization Visualization:**
-![QAOA Process](![image](https://github.com/user-attachments/assets/9ad9e9bd-523b-476d-bade-646f27b2857f)
-)
+![QAOA Process](images/QAOA.png)
 
 **Mathematical Model:**
 \[
