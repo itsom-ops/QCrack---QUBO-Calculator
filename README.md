@@ -31,7 +31,8 @@ factor_integer(21)  # Output: [3, 7]
 Internally, it constructs superpositions of modular exponentials and applies an **inverse QFT** to extract the period.
 
 **Quantum Circuit Visualization:**
-![Shor's Algorithm](https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/06_shor/shor_full.png)
+![Shor's Algorithm](![image](https://github.com/user-attachments/assets/bfd11c04-43a5-44ee-83fe-1e0c4fb010c7)
+)
 
 **Mathematical Workflow:**
 \[
@@ -51,7 +52,8 @@ create_qft_circuit(n_qubits=3)
 ```
 
 **Quantum Circuit:**
-![QFT](https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/04_QFT/qft.png)
+![QFT](![image](https://github.com/user-attachments/assets/890c64b0-6d40-4aeb-85f0-41ab8ed8a7b5)
+)
 
 **Core Transformation:**
 \[
@@ -71,7 +73,8 @@ simulate_qpe(qc)
 ```
 
 **Circuit Layout:**
-![QPE](https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/05_qpe/qpe_circuit.png)
+![QPE](![image](https://github.com/user-attachments/assets/f4f6a7f6-3fc6-4604-9dd3-6a9831d4f5f2)
+)
 
 This is used in:
 - **Quantum chemistry** for molecular ground-state energies.
@@ -92,7 +95,8 @@ solution, cost = simple_qubo_problem()
 - Parameter optimization: uses classical optimizers like COBYLA/SPSA
 
 **QAOA Optimization Visualization:**
-![QAOA Process](https://raw.githubusercontent.com/Qiskit/qiskit-machine-learning/main/docs/images/qaoa_process.png)
+![QAOA Process](![image](https://github.com/user-attachments/assets/9ad9e9bd-523b-476d-bade-646f27b2857f)
+)
 
 **Mathematical Model:**
 \[
