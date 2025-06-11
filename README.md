@@ -31,7 +31,7 @@ factor_integer(21)  # Output: [3, 7]
 Internally, it constructs superpositions of modular exponentials and applies an **inverse QFT** to extract the period.
 
 **Quantum Circuit Visualization:**
-<img src="https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/06_shor/shor_full.png" alt="Shor's Algorithm" width="600"/>
+<img src="images/QC.png" alt="Shor's Algorithm" width="600"/>
 
 **Mathematical Workflow:**
 ```math
@@ -51,14 +51,20 @@ create_qft_circuit(n_qubits=3)
 ```
 
 **Quantum Circuit:**
-<img src="https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/04_QFT/qft.png" alt="QFT" width="600"/>
+<img src="images/QFT.jpeg" alt="QFT" width="600"/>
 
 **Core Transformation:**
 ```math
 |x\rangle \rightarrow \frac{1}{\sqrt{2^n}} \sum_{y=0}^{2^n-1} e^{2\pi i xy / 2^n} |y\rangle
 ```
 
-It’s the foundation for every periodic function sampling in quantum space.
+**Mathematical Decomposition:**
+```math
+QFT_n = H_1 R_2 R_3 \dots R_n \cdot (I \otimes QFT_{n-1})
+```
+```math
+R_k = \begin{bmatrix} 1 & 0 \\ 0 & e^{2\pi i / 2^k} \end{bmatrix}
+```
 
 ---
 
@@ -71,11 +77,18 @@ simulate_qpe(qc)
 ```
 
 **Circuit Layout:**
-<img src="https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/05_qpe/qpe_circuit.png" alt="QPE" width="600"/>
+<img src="images/QPE.png" alt="QPE" width="600"/>
 
-This is used in:
-- **Quantum chemistry** for molecular ground-state energies.
-- **Hamiltonian simulation** for solving differential quantum systems.
+**Mathematical Model:**
+```math
+U |u\rangle = e^{2\pi i \theta} |u\rangle
+```
+```math
+|\psi\rangle = \frac{1}{2^n} \sum_{k=0}^{2^n - 1} e^{2\pi i k \theta} |k\rangle
+```
+```math
+QPE(|0\rangle^{\otimes n} \otimes |u\rangle) \Rightarrow |\tilde{\theta}\rangle \otimes |u\rangle
+```
 
 ---
 
@@ -92,11 +105,44 @@ solution, cost = simple_qubo_problem()
 - Parameter optimization: uses classical optimizers like COBYLA/SPSA
 
 **QAOA Optimization Visualization:**
-<img src="https://raw.githubusercontent.com/Qiskit/qiskit-machine-learning/main/docs/images/qaoa_process.png" alt="QAOA Process" width="600"/>
+<img src="images/QAOA.png" alt="QAOA Process" width="600"/>
 
 **Mathematical Model:**
 ```math
 H_{QUBO} = \sum_i Q_{ii} x_i + \sum_{i \neq j} Q_{ij} x_i x_j
+```
+```math
+|\gamma, \beta\rangle = e^{-i\beta_p H_M} e^{-i\gamma_p H_C} \cdots e^{-i\beta_1 H_M} e^{-i\gamma_1 H_C} |+\rangle^{\otimes n}
+```
+```math
+C(\gamma, \beta) = \langle \gamma, \beta| H_C |\gamma, \beta \rangle
+```
+
+---
+
+## 📈 Measurement Probabilities and Gate Decompositions
+
+### Measurement Probabilities
+Probabilities are derived from the squared amplitudes of the final quantum state vector. After applying gates and running the circuit on a simulator or quantum hardware, each basis state \(|x\rangle\) has a probability:
+
+```math
+P(x) = |\langle x|\psi \rangle|^2
+```
+
+In QPE and QAOA, these measurement outcomes directly map to estimations and solutions respectively.
+
+### Gate Decomposition Equations
+Every complex quantum algorithm here is broken into native gates:
+- **QFT**: Hadamard \( H \), and controlled-phase \( R_k \) gates
+- **QPE**: controlled-unitary gates + inverse QFT
+- **QAOA**: rotations \( R_Z, R_X \), and entanglers like CNOT
+
+Example decomposition:
+```math
+H = \frac{1}{\sqrt{2}}\begin{bmatrix}1 & 1 \\ 1 & -1\end{bmatrix}
+```
+```math
+R_Z(\theta) = \begin{bmatrix}1 & 0 \\ 0 & e^{i\theta}\end{bmatrix},\quad R_X(\theta) = e^{-i\theta X/2}
 ```
 
 ---
