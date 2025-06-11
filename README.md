@@ -1,80 +1,129 @@
-Welcome to the **QUBO Calculator**, a deeply engineered repository that merges theoretical elegance with hands-on quantum computing. Designed for professional demonstrations, academic competitions, and cryptographic disruption, this project showcases mastery over some of the most advanced quantum algorithms in contemporary computation.
+# QUBO Calculator: A Quantum Renaissance in Computation and Cryptography
 
-> This is not a hobbyist demo. This is a command center for simulating quantum supremacy over classical boundaries.
+Welcome to the **QUBO Calculator**, a deeply engineered repository at the intersection of theoretical quantum mechanics, quantum computing, and cryptographic deconstruction. This isn’t a project—it’s a **postulate in code**, a computational reflection of Dirac’s bra-ket formalism and Feynman’s simulation dreams.
 
----
-
-## 🧠 Project Philosophy
-
-In an era where classical computation begins to falter under exponential complexity, quantum computing emerges not just as a tool — but as a paradigm shift. This repository embraces that shift, and presents a **multi-algorithmic arsenal**:
-
-- Factoring large integers using **Shor’s Algorithm** to challenge RSA encryption.
-- Precise phase extraction with **Quantum Phase Estimation** (QPE).
-- Custom construction of the **Quantum Fourier Transform** (QFT) — the backbone of quantum signal analysis.
-- Solving discrete binary optimization problems via **QUBO** formulation using **QAOA**.
-
-Whether you’re simulating quantum attacks on encryption or optimizing NP-hard problems, this repo is built to **execute, analyze, and awe**.
+> Crafted with the precision of a researcher, the complexity of a doctoral thesis, and the vision of a quantum future.
 
 ---
 
-## 🧬 Core Quantum Systems Implemented
+## 🧠 Quantum Project Philosophy
 
-### 1. **Shor's Algorithm**
-Factorizes a composite number \( N \in \mathbb{Z}^+ \) using quantum period finding and classical post-processing:
+This repository doesn’t just implement algorithms; it **translates the deepest quantum phenomena** into executable logic:
+
+- **Factoring integers with Shor’s Algorithm**, revealing the instability of RSA.
+- **Extracting eigenphases with Quantum Phase Estimation (QPE)** to reconstruct the core idea of energy-level simulation.
+- **Implementing Quantum Fourier Transform (QFT)** from first principles.
+- **Solving QUBO formulations via QAOA**, proving how combinatorial optimization can be morphed into a quantum-native task.
+
+It is a research-ready platform, architected for those who not only **use** quantum computing — but **understand it.**
+
+---
+
+## 🧬 Core Quantum Modules (Implemented in Full Fidelity)
+
+### 1. Shor's Algorithm – Periodicity-Based Factorization
+Shor’s algorithm decomposes RSA-challenging integers using **modular exponentiation** and **quantum period finding**, followed by a classical **continued fractions** algorithm to extract the correct order \( r \):
+
 ```python
-factor_integer(21)
-# Output: [3, 7]
+factor_integer(21)  # Output: [3, 7]
 ```
-Used to demonstrate the cryptographic vulnerability of RSA-based security.
 
-### 2. **Quantum Fourier Transform (QFT)**
-Builds and applies an n-qubit QFT:
+Internally, it constructs superpositions of modular exponentials and applies an **inverse QFT** to extract the period.
+
+**Quantum Circuit Visualization:**
+![Shor's Algorithm](https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/06_shor/shor_full.png)
+
+**Mathematical Workflow:**
+\[
+\text{Find period } r \text{ such that } a^r \equiv 1 \ (\text{mod } N)
+\]
+\[
+\text{Then use GCD}(a^{r/2} \pm 1, N) \Rightarrow \text{factors of } N
+\]
+
+---
+
+### 2. Quantum Fourier Transform (QFT)
+This implementation of the QFT operates in-place, building the recursive decomposition from Hadamard gates and controlled phase shifts:
+
 ```python
-circuit = create_qft_circuit(3)
-circuit.draw()
+create_qft_circuit(n_qubits=3)
 ```
-QFT is the core of many quantum protocols — this implementation is exact and swappable into larger algorithms.
 
-### 3. **Quantum Phase Estimation (QPE)**
-Estimates the eigenphase \( \phi \) of a unitary operator \( U \) applied to an eigenvector \( |\psi\rangle \):
+**Quantum Circuit:**
+![QFT](https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/04_QFT/qft.png)
+
+**Core Transformation:**
+\[
+|x\rangle \rightarrow \frac{1}{\sqrt{2^n}} \sum_{y=0}^{2^n-1} e^{2\pi i xy / 2^n} |y\rangle
+\]
+
+It’s the foundation for every periodic function sampling in quantum space.
+
+---
+
+### 3. Quantum Phase Estimation (QPE)
+The QPE algorithm encodes a unitary operator’s eigenvalue phase into a readout register using **controlled unitaries** and an **inverse QFT**:
+
 ```python
-qc = qpe_circuit(unitary, eigenstate, 4)
+qc = qpe_circuit(unitary, eigenstate, n_count=4)
 simulate_qpe(qc)
 ```
-Crucial for chemistry, HHL, and beyond.
 
-### 4. **QUBO Solver with QAOA**
-Solves binary quadratic optimization problems like Max-Cut, graph coloring, etc.:
-```python
-simple_qubo_problem()
-# Returns optimal bitstring and cost
-```
+**Circuit Layout:**
+![QPE](https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/05_qpe/qpe_circuit.png)
+
+This is used in:
+- **Quantum chemistry** for molecular ground-state energies.
+- **Hamiltonian simulation** for solving differential quantum systems.
 
 ---
 
-## 🧪 File & Folder Structure
+### 4. QUBO Solver via QAOA
+The QUBO (Quadratic Unconstrained Binary Optimization) problem is translated into an **Ising Hamiltonian**, and solved via **Quantum Approximate Optimization Algorithm (QAOA)**:
+
+```python
+solution, cost = simple_qubo_problem()
+```
+
+**Architecture:**
+- Cost layer: encodes QUBO objective into a cost Hamiltonian
+- Mixer layer: drives state transitions across bitstrings
+- Parameter optimization: uses classical optimizers like COBYLA/SPSA
+
+**QAOA Optimization Visualization:**
+![QAOA Process](https://raw.githubusercontent.com/Qiskit/qiskit-machine-learning/main/docs/images/qaoa_process.png)
+
+**Mathematical Model:**
+\[
+H_{QUBO} = \sum_i Q_{ii} x_i + \sum_{i \neq j} Q_{ij} x_i x_j
+\]
+
+---
+
+## 🧪 Project Directory Anatomy
 
 ```
 qubo-calculator/
-├── src/                        # Core algorithm modules
-│   ├── __init__.py
-│   ├── shor_algorithm.py       # Full Shor’s algorithm implementation
-│   ├── qft_module.py           # Quantum Fourier Transform logic
-│   ├── qpe_module.py           # Quantum Phase Estimation framework
-│   └── qubo_solver.py          # QUBO model solved using QAOA
+├── src/                        # Core quantum implementations
+│   ├── shor_algorithm.py       # Shor’s algorithm from scratch
+│   ├── qft_module.py           # QFT and its inverse
+│   ├── qpe_module.py           # Full QPE with simulation
+│   └── qubo_solver.py          # QUBO optimization using QAOA
 │
-├── main.py                    # Unified CLI runner
-├── requirements.txt           # Dependencies
-├── .gitignore                 # Clean Git commits
-├── LICENSE                    # MIT License
+├── main.py                     # Unified driver to showcase all algorithms
+├── requirements.txt            # Reproducible environment setup
+├── .gitignore                  # Clean commits and deploys
+├── LICENSE                     # MIT-licensed
 └── notebooks/
-    └── demo_playground.ipynb  # Interactive demonstration notebook
+    └── demo_playground.ipynb   # Interactive notebook for experimentation
 ```
 
 ---
 
-## 🔧 Installation & Setup
+## 🔧 Installation
 
+Clone and install:
 ```bash
 git clone https://github.com/yourusername/qubo-calculator.git
 cd qubo-calculator
@@ -82,42 +131,45 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Use `notebooks/demo_playground.ipynb` to explore the algorithms visually.
+Launch the visual notebook:
+```bash
+jupyter notebook notebooks/demo_playground.ipynb
+```
 
 ---
 
-## 🚀 Usage Highlights
+## 🚀 Execution Showcase
 
-### Run Everything from `main.py`
+Run a full simulation sequence:
 ```bash
 python main.py
 ```
 This will:
-- Factorize 21 using Shor’s algorithm
-- Build and display a QFT on 3 qubits
-- Estimate a quantum phase with 4 counting qubits
-- Solve a small QUBO via QAOA
-
-Each module runs independently as well. Perfect for integrating into larger research setups.
+- Factor `21` with Shor’s
+- Show 3-qubit QFT
+- Estimate a phase using QPE
+- Solve a QUBO optimization instance
 
 ---
 
-## 📚 Concepts Covered in Depth
-- Modular Arithmetic and Periodicity
-- Quantum Parallelism
-- Controlled Phase Operations
-- QFT Unitarity and Eigen Decomposition
-- Binary Optimization Formulations
-- Hybrid Classical-Quantum Algorithms
-- Entanglement, Superposition, and Circuit Interference
+## 📚 Quantum Concepts Covered
+
+| Concept                        | Applied In                            |
+|-------------------------------|----------------------------------------|
+| Modular Exponentiation        | Shor’s Algorithm                       |
+| Continued Fractions           | Post-processing of period              |
+| Entanglement & Interference   | QFT, QPE, QAOA                         |
+| Eigenvalue Decomposition      | QPE                                    |
+| Binary Optimization Encoding  | QUBO via QAOA                          |
+| Classical-Quantum Hybrids     | QAOA Parameter Tuning                  |
 
 ---
 
-## 🧠 Ideal For:
-- Quantum Cryptography Competitions
-- Post-Quantum Security Demonstrations
-- Optimization Research
-- Teaching Advanced Quantum Algorithms
-- Benchmarking Qiskit Implementations
+## 📌 Target Use-Cases
+- Quantum Cryptanalysis
+- Optimization Theory Research
+- Advanced Quantum Circuit Design
+- Doctoral Thesis Demonstrations
+- Final-Year Research Submissions
 
 ---
