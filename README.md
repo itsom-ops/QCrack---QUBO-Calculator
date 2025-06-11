@@ -31,8 +31,7 @@ factor_integer(21)  # Output: [3, 7]
 Internally, it constructs superpositions of modular exponentials and applies an **inverse QFT** to extract the period.
 
 **Quantum Circuit Visualization:**
-![Shor's Algorithm](images/QC.png)
-)
+<img src="https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/06_shor/shor_full.png" alt="Shor's Algorithm" width="600"/>
 
 **Mathematical Workflow:**
 \[
@@ -52,7 +51,7 @@ create_qft_circuit(n_qubits=3)
 ```
 
 **Quantum Circuit:**
-![QFT](images/QFT.jpeg)
+<img src="https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/04_QFT/qft.png" alt="QFT" width="600"/>
 
 **Core Transformation:**
 \[
@@ -72,7 +71,7 @@ simulate_qpe(qc)
 ```
 
 **Circuit Layout:**
-![QPE](images/QPE.png)
+<img src="https://raw.githubusercontent.com/Qiskit/qiskit/main/docs/images/tutorials/circuits_advanced/05_qpe/qpe_circuit.png" alt="QPE" width="600"/>
 
 This is used in:
 - **Quantum chemistry** for molecular ground-state energies.
@@ -93,7 +92,7 @@ solution, cost = simple_qubo_problem()
 - Parameter optimization: uses classical optimizers like COBYLA/SPSA
 
 **QAOA Optimization Visualization:**
-![QAOA Process](images/QAOA.png)
+<img src="https://raw.githubusercontent.com/Qiskit/qiskit-machine-learning/main/docs/images/qaoa_process.png" alt="QAOA Process" width="600"/>
 
 **Mathematical Model:**
 \[
